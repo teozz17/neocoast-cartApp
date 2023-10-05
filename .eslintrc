@@ -3,7 +3,8 @@
   "extends": [
     "airbnb",
     "plugin:import/errors",
-    "plugin:import/warnings"
+    "plugin:import/warnings",
+    "prettier"
   ],
   "env": {
     "browser": true,
@@ -14,7 +15,8 @@
   "plugins": [
     "react",
     "module-resolver",
-    "sort-keys-fix"
+    "sort-keys-fix",
+    "prettier"
   ],
   "parserOptions": {
     "ecmaVersion": 6,
@@ -24,6 +26,7 @@
     }
   },
   "rules": {
+    "prettier/prettier": ["error"],
     "camelcase": 0,
     "default-param-last": 0,
     "sort-keys-fix/sort-keys-fix": "warn",
