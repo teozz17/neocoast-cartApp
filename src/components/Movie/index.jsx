@@ -30,7 +30,7 @@ const Movie = ({
       <h3 className="movie__title">{title}</h3>
       <p className="movie__year">{releaseYear}</p>
       <CustomButton
-        name={`${isFavorite ? '-' : '+'} Favorites`}
+        name={`${isFavorite ? '- Remove' : '+ Add'}`}
         type={isFavorite ? 'secondary' : 'primary'}
         onClick={() => isFavorite
           ? removeFromFavorites(favoriteIndex)

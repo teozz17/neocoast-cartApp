@@ -2,6 +2,8 @@ import React from 'react';
 import cn from 'classnames';
 import PropTypes from 'prop-types';
 
+import './styles.scss';
+
 const CustomButton = ({
   isDisabled = false,
   type = 'primary',
@@ -10,9 +12,15 @@ const CustomButton = ({
 }) => (
   <button
     disabled={isDisabled}
-    onClick={onClick}
+    onClick={(event) => {
+      event.preventDefault(); // stops the parent (Movie) onClick from firing
+
+      onClick();
+    }}
     className={
-      cn('custom-button', { 'custom-buttom--secondary': type === 'secondary' })
+      cn('custom-button', {
+        'custom-button--secondary': type === 'secondary',
+      })
     }
   >
     {name}

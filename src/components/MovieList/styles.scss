@@ -1,3 +1,5 @@
+@import '../../theme/variables.scss';
+
 .movie-list {
   display: flex;
   flex-wrap: wrap;
@@ -5,4 +7,10 @@
   justify-content: center;
   width: 90%;
   gap: 20px;
+
+  &__empty {
+    font-size: 2rem;
+    margin-top: 70px;
+    color: $white;
+  }
 }

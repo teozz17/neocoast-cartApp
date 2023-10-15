@@ -1,10 +1,23 @@
-@import "../../theme/index.scss";
+@import "../../theme/variables.scss";
 
 .custom-button {
-  background-color: $color-primary;
+  background-color: $primary;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  height: 30px;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 5px;
+  border: 1px solid $highlight;
+  box-shadow: 0 2px 8px $shadow-color;
+  width: 80px;
+  color: $white;
 
   &--secondary {
-    background-color: $color-secondary;
-    color: $color-white;
+    background-color: $secondary;
+    color: $white;
+    border: 0.5px solid $highlight;
+    box-shadow: none;
   }
 }
