@@ -10,7 +10,7 @@ module.exports = () => ({
           {
             loader: 'sass-loader',
             options: {
-              additionalData: '@import "./src/theme/index";',
+              additionalData: '@import "./src/theme/variables";',
             },
           },
         ],

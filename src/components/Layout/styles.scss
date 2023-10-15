@@ -1,0 +1,11 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(90deg, rgba(179, 121, 1, 0.6573223039215687) 0%, rgba(121, 9, 69, 1) 35%, rgba(0, 212, 255, 1) 100%);
+  min-height: 100%;
+
+  &__children {
+    padding: 20px;
+    height: 100%;
+  }
+}

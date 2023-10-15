@@ -2,17 +2,16 @@ import React from 'react';
 import { useOutletContext } from 'react-router-dom';
 
 import MovieList from 'Components/MovieList';
-import moviesData from 'Data/movies';
 
 import './styles.scss';
 
-const Home = () => {
+const Favorites = () => {
   const [favorites, setFavorites] = useOutletContext();
 
   return (
     <div className="home">
       <MovieList
-        movies={moviesData}
+        movies={favorites}
         setFavorites={setFavorites}
         favorites={favorites}
       />
@@ -20,4 +19,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Favorites;

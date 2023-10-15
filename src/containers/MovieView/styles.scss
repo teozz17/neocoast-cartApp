@@ -1,0 +1,75 @@
+@import '../../theme/variables.scss';
+
+.movie-view {
+  display: flex;
+  background-color: $card-background;
+  border: 1px solid $highlight;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  overflow: scroll;
+  max-height: calc(100vh - 200px);
+  width: 70%;
+  min-height: 300px;
+  align-items: center;
+
+  &--error {
+    flex-direction: column;
+    background-color: $card-background;
+
+    img {
+      width: 100%;
+      max-width: 500px;
+      max-height: 70%;
+      border-radius: 10px;
+    }
+  }
+
+  &__image {
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    width: 40%;
+
+    img {
+      max-width: 100%;
+      border: 1px solid $highlight;
+      border-radius: 4px;
+    }
+  }
+
+  &__details {
+    width: 60%;
+  }
+
+  &__title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  &__release-year {
+    font-size: 1rem;
+    opacity: 0.5;
+    margin-bottom: 10px;
+  }
+
+  &__description {
+    font-size: 1rem;
+  }
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+    width: 90%;
+
+    &__image {
+      margin-right: 0;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    &__details {
+      width: 90%;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+@import "../../theme/index.scss";
+
+.custom-button {
+  background-color: $color-primary;
+
+  &--secondary {
+    background-color: $color-secondary;
+    color: $color-white;
+  }
+}

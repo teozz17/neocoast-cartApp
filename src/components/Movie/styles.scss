@@ -1,0 +1,41 @@
+@import '../../theme/variables.scss';
+
+.movie {
+  background-color: $card-background;
+  border: 1px solid $white;
+  border-radius: 4px;
+  padding: 10px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  width: 27%;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px $shadow-color;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  &__title {
+    font-size: 1.2rem;
+    margin: 10px 0;
+  }
+
+  &__year {
+    font-size: 1rem;
+    opacity: 0.6;
+    text-decoration: none;
+  }
+
+  @media (max-width: 660px) {
+    width: 35%;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: $black;
+}

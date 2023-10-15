@@ -1,0 +1,32 @@
+.error-page {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  flex: 1;
+  flex-direction: column;
+  font-family: monospace;
+  justify-content: center;
+  background-color: white;
+  border-radius: 10px;
+  width: 80%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: auto;
+
+  & h1 {
+    font-size: 30px;
+  }
+
+  & h5 {
+    font-size: 12px;
+    margin: 0;
+  }
+
+  &__image {
+    width: 70%;
+    max-width: 1500px;
+
+    @media (max-width: 800px) {
+      width: 100%;
+    }
+  }
+}

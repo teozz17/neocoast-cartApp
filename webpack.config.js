@@ -30,6 +30,17 @@ module.exports = ({
           ],
         },
         mode,
+        module: {
+          rules: [
+            {
+              loader: 'file-loader',
+              options: {
+                name: './src/assets/[name].[ext]',
+              },
+              test: /\.(jpe?g|png|gif|svg)$/i,
+            },
+          ],
+        },
         output: {
           chunkFilename: '[name].lazy-chunk.js',
           filename: 'bundle.[hash].js',
