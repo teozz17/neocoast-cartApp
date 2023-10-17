@@ -1,14 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import MovieList from 'Components/MovieList';
-import moviesData from 'Data/movies';
+
+import getMovies from 'Api/movies';
 
 import './styles.scss';
 
-const Home = () => (
-  <div className="home">
-    <MovieList movies={moviesData} />
-  </div>
-);
+const Home = () => {
+  const [movieList, setMovieList] = useState([]);
+
+  const initHome = async () => {
+    const movies = await getMovies();
+
+    console.log(movies);
+
+    setMovieList(movies.data.results);
+  };
+
+  useEffect(() => {
+    initHome();
+  }, []);
+
+  return (
+    <div className="home">
+      <MovieList movies={movieList} />
+    </div>
+  );
+};
 
 export default Home;
