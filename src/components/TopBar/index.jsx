@@ -1,6 +1,6 @@
 // TopBar.js
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import './styles.scss';
@@ -16,9 +16,14 @@ const TopBar = ({ logo, routes }) => (
     </div>
     <nav className="top-bar__nav">
       <ul>
-        {routes.map((route) => (
-          <li key={route.label}>
-            <Link to={route.route}>{route.label}</Link>
+        {routes.map(({ label, route }) => (
+          <li key={label}>
+            <NavLink
+              to={route}
+              className={({ isActive }) => isActive && 'top-bar__active'}
+            >
+              {label}
+            </NavLink>
           </li>
         ))}
       </ul>

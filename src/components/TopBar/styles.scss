@@ -43,4 +43,13 @@
       }
     }
   }
+
+  &__active {
+    color: $black !important;
+    transform: scale(1.1);
+    background-color: $highlight;
+    padding: 5px 10px;
+    border-radius: 5px;
+    opacity: 0.5;
+  }
 }
