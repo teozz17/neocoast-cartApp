@@ -8,14 +8,15 @@ import {
 import { ROUTES } from 'Data/constants';
 
 import Home from 'Containers/Home';
+import Login from 'Containers/Login';
 
 import './index.scss';
 
 const App = () => (
   <BrowserRouter>
     <Routes>
-      <Route path={ROUTES.login} element={""}/>
-      <Route path={ROUTES.home}  />
+      <Route path={ROUTES.login} element={<Login/>}/>
+      <Route path={ROUTES.home}  element={""}/>
         <Route index element={<Home />} />
         <Route path={ROUTES.cart} element={""} />
         <Route path={ROUTES.gitf} element={""} />
