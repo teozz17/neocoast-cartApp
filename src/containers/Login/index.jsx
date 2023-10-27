@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import {useForm} from "react-hook-form";
 
 import getUsers from '../../api/users';
 
@@ -6,6 +7,8 @@ import "./index.scss";
 
 const Login = () => {
 
+const {register, handleSubmit} = useForm();
+const onSubmit = (data, e) => console.log(data);
 const [users, setUsers] = useState([]); 
 
 const init = async () => {
@@ -18,14 +21,21 @@ useEffect(() => {
     init();
 }, []);
 
-
   return (
     <div className="login">
-        <form className="login-form">
+        <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
             <h1 className="login-title">Cart App</h1>
-            <input className="login-form__input" type="email" placeholder="Email" />
-            <input className="login-form__input" type="password" placeholder="Password" />
-            <button className="login-form__button">Login</button>
+            <input
+                {...register ("email", {required: true})} 
+                className="login-form__input" 
+                type="email" 
+                placeholder="Enter your email" />
+            <input
+                {...register ("password", {required: true})} 
+                className="login-form__input" 
+                type="password" 
+                placeholder="Enter your password" />
+            <button type="submit" className="login-form__button">Login</button>
         </form>
     </div>
   )
