@@ -8,7 +8,7 @@ import "./index.scss";
 const Login = () => {
 
 const {register, handleSubmit} = useForm();
-const onSubmit = (data, e) => console.log(data);
+
 const [users, setUsers] = useState([]); 
 
 const init = async () => {
@@ -20,6 +20,8 @@ const init = async () => {
 useEffect(() => {
     init();
 }, []);
+
+const onSubmit = (data, e) => console.log(data);
 
   return (
     <div className="login">
@@ -37,6 +39,8 @@ useEffect(() => {
                 placeholder="Enter your password" />
             <button type="submit" className="login-form__button">Login</button>
         </form>
+        
+        <div className="wave" ></div>
     </div>
   )
 }   
