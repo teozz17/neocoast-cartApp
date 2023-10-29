@@ -1,15 +1,17 @@
 import React, {useState, useEffect} from "react";
 import {useForm} from "react-hook-form";
 import { ErrorMessage } from '@hookform/error-message';
+import { useNavigate } from "react-router-dom";
 
 import Error from '../../components/Error';
-import getUsers from '../../api/users';
+import { getUsers } from '../../api/users';
 
 import "./index.scss";
 
 const Login = () => {
 
 const {register, formState: { errors }, handleSubmit} = useForm();
+const navigate = useNavigate();
 
 const [users, setUsers] = useState([]); 
 const [flag, setFlag] = useState(false);
@@ -24,13 +26,13 @@ useEffect(() => {
     init();
 }, []);
 
-const onSubmit = (data, e) => {
-    const user = users.find(user => user.email === data.email && user.password === data.password);
+const onSubmit = (data) => {
+    const user = users.find(user => user.email.toLowerCase() === data.email.toLowerCase() && user.password === data.password);
     if (user === undefined) {
         setFlag(true);
-        console.log("Usuario no encontrado");
     } else{
-        console.log("Usuario encontrado");
+        localStorage.setItem("userData", JSON.stringify(user));
+        navigate("/");
     }
 };
 
@@ -38,6 +40,7 @@ const onSubmit = (data, e) => {
     <div className="login">
         <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
             {flag && <Error message="⚠ User not found"/>}
+            {}
             <h1 className="login-form__title">Cart App</h1>
             <input onChangeCapture={() => setFlag(false)}
                 {...register ("email", {required: "⚠ This field is required!!!"})} 

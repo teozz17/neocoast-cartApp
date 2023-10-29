@@ -1,3 +1,8 @@
 import instance from './config';
 
-export default () => instance.get('/users');
+const getUsers = () => instance.get('/users');
+
+const getUser = (id) => instance.get(`/users/${id}`);
+
+export {getUser, getUsers};
+
