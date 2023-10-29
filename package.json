@@ -12,6 +12,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@hookform/error-message": "^2.0.1",
     "axios": "^1.5.1",
     "classnames": "^2.3.2",
     "prop-types": "^15.8.1",
