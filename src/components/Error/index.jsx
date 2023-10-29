@@ -1,9 +1,11 @@
 import React from "react";
 
-export default () => {
+import "./index.scss";
+
+export default ({message}) => {
     return (
         <div className="error">
-            <h1 className="error__title">User or Password Incorrect</h1>
+            <p className="error__title">{message}</p>
         </div>
     );
 }

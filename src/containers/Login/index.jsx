@@ -12,6 +12,7 @@ const Login = () => {
 const {register, formState: { errors }, handleSubmit} = useForm();
 
 const [users, setUsers] = useState([]); 
+const [flag, setFlag] = useState(false);
 
 const init = async () => {
     const response = await getUsers();
@@ -26,6 +27,7 @@ useEffect(() => {
 const onSubmit = (data, e) => {
     const user = users.find(user => user.email === data.email && user.password === data.password);
     if (user === undefined) {
+        setFlag(true);
         console.log("Usuario no encontrado");
     } else{
         console.log("Usuario encontrado");
@@ -35,9 +37,9 @@ const onSubmit = (data, e) => {
   return (
     <div className="login">
         <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
-          
+            {flag && <Error message="⚠ User not found"/>}
             <h1 className="login-form__title">Cart App</h1>
-            <input
+            <input onChangeCapture={() => setFlag(false)}
                 {...register ("email", {required: "⚠ This field is required!!!"})} 
                 className="login-form__input" 
                 type="text" 

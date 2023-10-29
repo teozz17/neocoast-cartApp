@@ -9,15 +9,14 @@
     overflow: auto;
 
     &-form {
-        padding-bottom: 50px;
-        margin-top: 10vh;
+        margin-top: 55px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         background-color: whitesmoke;
         width: 450px;
-        height: 420px;
+        min-height: 420px;
         border-radius: 15%;
         box-shadow: 0 1px 20px 5px rgb(0, 0, 0, 0.36);
 
@@ -30,6 +29,8 @@
         }
 
         &__title {
+            margin-bottom: 20px;
+            margin-top: 5px;
             font-size: 40px;
             font-weight: bold;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -38,9 +39,12 @@
         }
 
         &__input {
+            border: 1px solid #F99417;
+            padding: 10px;
+            margin: 10px;
             font-size: medium;
             font-weight:normal ;
-            margin-top: 1rem;
+            margin-top: 10px;
             width: 380px;
             height: 40px;
 
@@ -50,18 +54,22 @@
         }
 
         &__error{
+            margin-top: -6px;
+            margin-bottom: 1px;
             color: red;
-            font-size: medium;
-            font-weight:700;
+            font-size: small;
+            font-weight:600;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
 
         &__button {
+            padding: 10px;
             width: 120px;
             height: 70px;
             border-radius: 15%;
             border-color: #F99417;
-            margin-top: 1rem;
+            margin-top: 30px;
+            margin-bottom: 30px;
             background-color: #F99417;
             color: whitesmoke;
             font-size: 1.5rem;
@@ -78,7 +86,7 @@
         height: 100px;
         background-image: url("../../data/images/wave.png");
         background-size: 1000px 100px;
-        animation: animate 15s linear infinite;
+        animation: animate 5s linear infinite;
     }
 
     @keyframes animate {
