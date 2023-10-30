@@ -1,0 +1,47 @@
+.nav-bar{
+    height: 120px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg, rgb(238, 147, 34) , rgb(233, 184, 36), rgb(33, 156, 144));
+
+    &__logo{
+        position: relative;
+        margin: 5px;
+        width: 130px;
+        height: 110px;
+    }
+
+    &__nav{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 110px;
+        width: 300px;
+    }
+
+    & ul{
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        
+    
+        & li{
+            width: 50px;
+            list-style: none;
+            margin: 10px;
+        }
+    }
+
+    &__active{
+        color: black;
+        border-bottom: 5px solid white;        
+        opacity: 0.5;
+    }
+}
+
+.image{
+    width: 100%;
+    height: 100%;
+}
