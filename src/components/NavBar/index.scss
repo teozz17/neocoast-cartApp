@@ -4,13 +4,15 @@
  }
 
 .nav-bar {
-    height: auto;
+    height: 120px;
     border: 2px solid black;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(90deg, rgb(238, 147, 34) , rgb(233, 184, 36), rgb(33, 156, 144));
     position: sticky;
+    top: 0;
+    background: linear-gradient(90deg, rgb(238, 147, 34) , rgb(233, 184, 36), rgb(33, 156, 144));
+
     top: 0;
 
     &__logo {
@@ -91,6 +93,7 @@
     }
 
     @media (max-width: 500px) {
+        height: auto;
         flex-direction: column;
         align-items: start;
     }
