@@ -1,25 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { ROUTES } from "../../data/constants";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { PropTypes } from "prop-types";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 import "./index.scss";
 
 const NavBar = ({logo, routes}) => {
+
+    const [menuOpen, setMenuOpen] = useState(false);
+
     return(
         <header className="nav-bar">
             <div className="nav-bar__logo">
-                <NavLink to={ROUTES.home}>
+                <Link to={ROUTES.home}>
                     <img className="image" src={logo} alt="Logo" />
-                </NavLink>
+                </Link>
+            </div>
+            <div className="nav-bar__menu" onClick={() => setMenuOpen(!menuOpen)}>
+                <GiHamburgerMenu />
             </div>
             <nav className="nav-bar__nav">
-                <ul>
+                <ul className={menuOpen ? "open" : ""}>
                     {routes.map(({label, logo, route}) => (
-                        <li key={label}>
-                            <NavLink
-                                to={route} 
-                                className={({ isActive }) => isActive && 'nav-bar__active'}>
+                        <li key={label} className="icon-style">
+                            <NavLink to={route} onClick={() => setMenuOpen(!menuOpen)}>
                                 {logo}
                             </NavLink>
                         </li>

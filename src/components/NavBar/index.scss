@@ -1,44 +1,112 @@
-.nav-bar{
-    height: 120px;
+.active {
+    opacity: 0.5;
+    border-bottom: 5px solid white;
+ }
+
+.nav-bar {
+    height: auto;
     border: 2px solid black;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: linear-gradient(90deg, rgb(238, 147, 34) , rgb(233, 184, 36), rgb(33, 156, 144));
+    position: sticky;
+    top: 0;
 
-    &__logo{
+    &__logo {
         position: relative;
         margin: 5px;
         width: 130px;
         height: 110px;
     }
 
-    &__nav{
+    &__nav {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 110px;
+        height: auto;
         width: 300px;
-    }
 
-    & ul{
+        @media (max-width: 500px) {
+            width: 100%;
+        }
+    }
+    
+    & ul {
+        width: 100%;
         display: flex;
         align-items: center;
         flex-direction: row;
         
-    
-        & li{
+        & li {
             width: 50px;
             list-style: none;
             margin: 10px;
+
+            & a { 
+                
+                @media (max-width: 500px) {
+                    padding: 10px;
+                    padding-left: 200px;
+                    border: 3px solid white;
+                    border-radius: 10px;
+                }
+            }
+
+            @media (max-width: 500px) {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 500px) {
+            display: none;
+            flex-direction: column;
+            align-items: flex-end;
+            margin-right: 1.50rem;
+            width: 100%;
+
+            &.open{
+                display: flex;
+            }
         }
     }
 
-    &__active{
-        color: black;
-        border-bottom: 5px solid white;        
-        opacity: 0.5;
+    &__menu{
+        display: none;
+        top: 2.50rem;
+        right: 2.75rem;
+        position: absolute;
+        font-size: 40px;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        @media (max-width: 500px) {
+            display: flex;
+        }
     }
+
+    @media (max-width: 500px) {
+        flex-direction: column;
+        align-items: start;
+    }
+}
+
+.icon-style{
+    font-size: 40px;
+
+        & a {
+            color: black;
+
+            &:not(.active):hover {
+                font-size: 55px;
+                transition: 0.25s ease-out;
+            }
+        }
 }
 
 .image{

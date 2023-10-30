@@ -14,9 +14,9 @@ const Layout = () => {
             <NavBar 
                 logo={'https://img.freepik.com/vector-gratis/diseno-logotipo-tienda-instagram_23-2149750724.jpg'}
                 routes={[
-                    {label: 'Cart', logo: <BsFillCartPlusFill className='icon-style'/>, route: ROUTES.cart}, 
-                    {label: 'Gift', logo: <BsGiftFill className='icon-style'/>, route: ROUTES.gitf}, 
-                    {label: 'Progile', logo: <CgProfile className='icon-style'/>, route: ROUTES.profile},
+                    {label: 'Cart', logo: <BsFillCartPlusFill />, route: ROUTES.cart}, 
+                    {label: 'Gift', logo: <BsGiftFill />, route: ROUTES.gitf}, 
+                    {label: 'Progile', logo: <CgProfile />, route: ROUTES.profile},
                 ]}
             />
             <div className="layout__children">
