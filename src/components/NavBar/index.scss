@@ -5,15 +5,13 @@
 
 .nav-bar {
     height: 120px;
-    border: 2px solid black;
     display: flex;
+    border-bottom: 1px solid grey;
     justify-content: space-between;
     align-items: center;
     position: sticky;
     top: 0;
     background: linear-gradient(90deg, rgb(238, 147, 34) , rgb(233, 184, 36), rgb(33, 156, 144));
-
-    top: 0;
 
     &__logo {
         position: relative;
@@ -27,7 +25,7 @@
         justify-content: center;
         align-items: center;
         height: auto;
-        width: 300px;
+        width: auto;
 
         @media (max-width: 500px) {
             width: 100%;
@@ -101,14 +99,15 @@
 
 .icon-style{
     font-size: 40px;
+    color: black;
 
         & a {
-            color: black;
+            color: inherit;
+        }
 
-            &:not(.active):hover {
-                font-size: 55px;
-                transition: 0.25s ease-out;
-            }
+        &:not(.active):hover {
+            font-size: 55px;
+            transition: 0.25s ease-out;
         }
 }
 

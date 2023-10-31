@@ -3,11 +3,13 @@ import { ROUTES } from "../../data/constants";
 import { NavLink, Link } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { HiOutlineLogout, HiOutlineLogin } from "react-icons/hi";
 
 import "./index.scss";
 
-const NavBar = ({logo, routes}) => {
+const NavBar = ({context, logo, routes}) => {
 
+    const actualUser = context;
     const [menuOpen, setMenuOpen] = useState(false);
 
     return(
@@ -29,6 +31,18 @@ const NavBar = ({logo, routes}) => {
                             </NavLink>
                         </li>
                     ))}
+                    <li>
+                        {actualUser != null ?
+                            <Link className="icon-style" to={"/login"}>
+                                <HiOutlineLogout onClick={() => {
+                                    localStorage.clear()
+                                }}/>
+                            </Link>
+                        :   <Link className="icon-style" to={"/login"}>
+                                <HiOutlineLogin />
+                            </Link>
+                        }
+                    </li>
                 </ul>
             </nav>
         </header>
