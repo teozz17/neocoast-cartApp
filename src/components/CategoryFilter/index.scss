@@ -1,0 +1,37 @@
+.category-filter {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    &__icon {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        width: 120px;
+        height: 50px;
+        margin-top: 20px;
+        border-radius: 5px;
+        background-color: #132043;
+    }
+
+    &__selector {
+        font-size: 40px;
+        padding-left: 0px;
+        color: white;
+    }
+
+    &__list {
+        display: none;
+
+        &__open {
+            padding-left: 0px;
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: center;
+        }
+    }
+}
