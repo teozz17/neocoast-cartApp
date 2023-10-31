@@ -39,8 +39,7 @@ const onSubmit = (data) => {
   return (
     <div className="login">
         <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
-            {flag && <Error message="⚠ User not found"/>}
-            {}
+            {flag && <Error message="⚠ Wrong email or password"/>}
             <Link to={ROUTES.home}>
                 <h1 className="login-form__title">Cart App</h1>
             </Link>
