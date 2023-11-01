@@ -6,15 +6,24 @@
     width: auto;
     height: auto;
     background-color: #132043;
-    border: 3px solid black;   
     border-radius: 50px;
     margin: 5px;
     padding: 50px;
+    box-shadow: 0 1px 20px 5px rgb(0, 0, 0, 0.36);
 
-    @media (max-width: 570px) {
+    @media (max-width: 670px) {
         margin: 0px;
         margin-top: 5px;
         padding: 25px;
+        box-shadow: none;
+    }
+
+    @media (max-width: 320px) {
+        margin: 0px;
+        margin-top: 5px;
+        padding: 5px;
+        box-shadow: none;
+        
     }
 }
 
@@ -37,6 +46,11 @@
         top: 0;
         left: 0;
         border-radius: 40%;
+
+        &:hover {
+            transform: scale(1.1);
+            transition: 0.15s ease;
+        }
     }
 
     &__title {
@@ -56,9 +70,19 @@
         font-size: 1.5rem;
         font-weight: 700;
         font-family: monospace;
+        padding-left: 10px;
+        padding-right: 10px;
+        cursor: default;
 
         @media (max-width: 570px) {
             font-size: 1rem;
+            padding: 0px;
+        }
+        
+        &:hover {
+            color: #F99417;
+            transition: 0.15s ease;
+            box-shadow: 0 1px 20px 5px rgb(0, 0, 0, 0.36);
         }
     }
 
