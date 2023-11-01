@@ -104,15 +104,24 @@
 
 .icon-style{
     font-size: 40px;
-    color: black;
 
         & a {
-            color: inherit;
+            color: black;
+            
+            &:not(.active):hover {
+                font-size: 55px;
+                transition: 0.25s ease;
+            }
         }
 
-        &:not(.active):hover {
-            font-size: 55px;
-            transition: 0.25s ease-out;
+        &__log {
+            font-size: 40px;
+            color: black;
+
+            &:not(.active):hover {
+                font-size: 55px;
+                transition: 0.25s ease;
+            }
         }
 }
 
