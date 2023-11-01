@@ -11,9 +11,13 @@
         cursor: pointer;
         width: 120px;
         height: 50px;
-        margin-top: 20px;
-        border-radius: 5px;
+        margin: 20px 0px;
+        border-radius: 10px;
         background-color: #132043;
+
+        @media (max-width: 440px) {
+            margin: 20px 50px;
+        }
     }
 
     &__selector {
@@ -22,16 +26,29 @@
         color: white;
     }
 
-    &__list {
+    &__container {
         display: none;
-
+        
         &__open {
-            padding-left: 0px;
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-            align-items: center;
+            position: absolute;
+            width: 244px;
+            height: 380px;
+            margin-top: 430px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, rgb(238, 147, 34) , rgb(233, 184, 36));
+        }
+
+        &__list {
+            display: none;
+            
+            &__open {
+                margin: 20px;
+                padding-left: 0px;
+                list-style: none;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+            }
         }
     }
 }

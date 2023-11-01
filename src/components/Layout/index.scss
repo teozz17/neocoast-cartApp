@@ -8,5 +8,9 @@
       background-color: whitesmoke;
       padding: 0px 50px;
       height: 100%;
+
+      @media (max-width: 440px) {
+        padding: 0px;
+      }
     }
   }

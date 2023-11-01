@@ -33,12 +33,12 @@ const NavBar = ({context, logo, routes}) => {
                     ))}
                     <li>
                         {actualUser != null ?
-                            <Link className="icon-style" to={"/login"}>
+                            <Link className="icon-style__log" to={"/login"}>
                                 <HiOutlineLogout onClick={() => {
                                     localStorage.clear()
                                 }}/>
                             </Link>
-                        :   <Link className="icon-style" to={"/login"}>
+                        :   <Link className="icon-style__log" to={"/login"}>
                                 <HiOutlineLogin />
                             </Link>
                         }
