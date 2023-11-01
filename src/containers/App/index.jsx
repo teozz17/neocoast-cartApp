@@ -10,6 +10,7 @@ import { ROUTES } from 'Data/constants';
 import Layout from 'Components/Layout';
 import Home from 'Containers/Home';
 import Login from 'Containers/Login';
+import Profile from 'Containers/Profile';
 
 import './index.scss';
 
@@ -22,7 +23,7 @@ const App = () => (
         <Route index element={<Home />} />
         <Route path={ROUTES.cart} element={""} />
         <Route path={ROUTES.gitf} element={""} />
-        <Route path={ROUTES.profile} element={""} />
+        <Route path={ROUTES.profile} element={<Profile/>} />
         <Route path={ROUTES.product} element={""} />
       </Route>
 

@@ -33,7 +33,7 @@ const onSubmit = (data) => {
     if (user === undefined) {
         setFlag(true);
     } else{
-        localStorage.setItem("userData", JSON.stringify(user));
+        localStorage.setItem("userData", JSON.stringify(user.id));
         navigate(ROUTES.home);
     }
 };

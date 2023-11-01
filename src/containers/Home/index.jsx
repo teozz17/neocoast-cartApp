@@ -15,12 +15,30 @@ const Home = () => {
   const [loadingProducts, setLoadingProducts] = useState(true);
 
   const init = async () => {
+
+    // setLoadingProducts(true);
+    // const promesasResueltas = await Promise.allSettled([ actualCategory === 'All' ? getProducts() : getProductsByCategory(actualCategory) , getCategories()])
+
+    // if (promesasResueltas[0].status != "rejected" ) {
+    //   setProducts(promesasResueltas[0].value.data);
+    //   setLoadingProducts(false);
+    // } else {
+    //   console.log("ERROR ON PRODUCTS FETCH");
+    // } 
+
+    // if (promesasResueltas[1].status != "rejected" ) {
+    //   promesasResueltas[1].value.data.unshift("All");
+    //   setCategories(promesasResueltas[1].value.data);
+    // } else {
+    //   console.log("ERROR ON CATEGORIES FETCH");
+    // }
+
     try {
       const response = await getCategories();
       response.data.unshift("All");
       setCategories(response.data);
     } catch (error) {
-      console.log("ERROR");
+      console.log("ERROR ON CATEGORIES FETCH");
     }
 
     setLoadingProducts(true);
@@ -29,14 +47,14 @@ const Home = () => {
         const response = await getProducts();
         setProducts(response.data);
       } catch (error) {
-        console.log("ERROR");
+        console.log("ERROR ON PRODUCTS FETCH");
       }
     } else {
       try {
         const response = await getProductsByCategory(actualCategory);
         setProducts(response.data);
       } catch (error) {
-        console.log("ERROR");
+        console.log("ERROR ON PRODUCTS FETCH");
       }
     }
     setLoadingProducts(false);

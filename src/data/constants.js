@@ -3,7 +3,7 @@
 export const ROUTES = {
   home: '/',
   login: 'login',
-  profile: 'profile/:id',
+  profile: 'profile',
   product: 'product/:id',
   cart: 'cart/:id',
   gitf: 'gift',
