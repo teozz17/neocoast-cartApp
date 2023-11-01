@@ -12,6 +12,7 @@ const Login = () => {
 
 const {register, formState: { errors }, handleSubmit} = useForm();
 const navigate = useNavigate();
+const actualUser = JSON.parse(localStorage.getItem("userData"));
 
 const [users, setUsers] = useState([]); 
 const [flag, setFlag] = useState(false);
@@ -23,6 +24,7 @@ const init = async () => {
 }
 
 useEffect(() => {
+    if(actualUser != null) navigate(ROUTES.home);
     init();
 }, []);
 
