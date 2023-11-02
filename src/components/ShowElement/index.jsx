@@ -23,7 +23,7 @@ const ShowElement = ({ user, product }) => {
                     </h1>
                 </div>
             </div>
-            <div className="first-container__title">
+            <div className="first-container__title second">
                 <div className="first-container__title">
                 <h1 name="name" className="first-container__userOrTitle">
                         Name: <span className="first-container__name">{firstname} {lastname}</span>

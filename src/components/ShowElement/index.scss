@@ -59,11 +59,20 @@
         border-radius: 10px;
         width: auto;
         height: auto;
+
+        &.second {
+            width: 510px;
+        
+            @media (max-width: 626px) {
+                width: auto;
+            }
+        }
     }
 
     &__userOrTitle {
         display: flex;
         align-items: center;
+        justify-content: flex-start;
         margin: 1rem;
         width: auto;
         height: auto;
