@@ -27,6 +27,9 @@ const App = () => (
         <Route path={ROUTES.product} element={""} />
       </Route>
 
+      {/* 404 not found route */}
+      <Route path="*" element={""} />
+
     </Routes>
   </BrowserRouter>
 );

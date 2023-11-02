@@ -32,10 +32,11 @@
         &__open {
             position: absolute;
             width: 244px;
-            height: 380px;
-            margin-top: 430px;
+            height: 440px;
+            margin-top: 490px;
             border-radius: 10px;
             background: linear-gradient(90deg, rgb(238, 147, 34) , rgb(233, 184, 36));
+            z-index: 1;
         }
 
         &__list {

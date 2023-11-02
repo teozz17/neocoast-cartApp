@@ -3,7 +3,9 @@ import ProductList from 'Components/ProductList';
 import { getProducts, getProductsByCategory, getCategories } from '../../api/products';
 import CategoryFilter from 'Components/CategoryFilter';
 import { MoonLoader  } from  'react-spinners'
-
+import Error from 'Components/Error';
+import { PiSmileySad } from "react-icons/pi";
+import { GiRun } from "react-icons/gi";
 
 import './index.scss';
 
@@ -13,32 +15,15 @@ const Home = () => {
   const [categories, setCategories] = useState([]);
   const [actualCategory, setActualCategory] = useState("All");
   const [loadingProducts, setLoadingProducts] = useState(true);
+  const [rejectedProducts, setRejectedProducts] = useState(false);
 
   const init = async () => {
 
-    // setLoadingProducts(true);
-    // const promesasResueltas = await Promise.allSettled([ actualCategory === 'All' ? getProducts() : getProductsByCategory(actualCategory) , getCategories()])
-
-    // if (promesasResueltas[0].status != "rejected" ) {
-    //   setProducts(promesasResueltas[0].value.data);
-    //   setLoadingProducts(false);
-    // } else {
-    //   console.log("ERROR ON PRODUCTS FETCH");
-    // } 
-
-    // if (promesasResueltas[1].status != "rejected" ) {
-    //   promesasResueltas[1].value.data.unshift("All");
-    //   setCategories(promesasResueltas[1].value.data);
-    // } else {
-    //   console.log("ERROR ON CATEGORIES FETCH");
-    // }
-
     try {
       const response = await getCategories();
-      response.data.unshift("All");
+      response.data.unshift("All", "TTGL");
       setCategories(response.data);
     } catch (error) {
-      console.log("ERROR ON CATEGORIES FETCH");
     }
 
     setLoadingProducts(true);
@@ -46,15 +31,25 @@ const Home = () => {
       try {
         const response = await getProducts();
         setProducts(response.data);
+        let random = Math.floor(Math.random() * 10);
+        if (random < 4){
+          throw new Error();
+        }
+        setRejectedProducts(false);
       } catch (error) {
-        console.log("ERROR ON PRODUCTS FETCH");
+        setRejectedProducts(true);
       }
     } else {
       try {
         const response = await getProductsByCategory(actualCategory);
         setProducts(response.data);
+        let random = Math.floor(Math.random() * 10);
+        if (random < 4){
+          throw new Error();
+        }
+        setRejectedProducts(false);
       } catch (error) {
-        console.log("ERROR ON PRODUCTS FETCH");
+        setRejectedProducts(true);
       }
     }
     setLoadingProducts(false);
@@ -82,8 +77,28 @@ const Home = () => {
             speedMultiplier={0.7}
             cssOverride={{'marginLeft': "auto", 'marginRight': "auto" , 'marginTop': "10%"}}
           /> 
+          : rejectedProducts?
+            <div className='home-error'>
+              <Error
+                color={"black"}
+                message={"Error on products fetch, please try again"} 
+                icon={<GiRun className='home-error__icon'/>}
+              />
+            </div>
+            :
+            products.length === 0 ? 
+            <div className='home-error'>
+              <Error
+                color={"black"}
+                message={"Unfortunately there aren't any products for this category"} 
+                icon={<PiSmileySad className='home-error__icon'/>}
+              />   
+            </div>
           : 
-         <ProductList products={ products } /> }
+            <ProductList 
+              products={ products } 
+            /> 
+          }
     </div>
   );
 };
