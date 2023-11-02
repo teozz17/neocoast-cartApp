@@ -5,6 +5,7 @@ import CategoryFilter from 'Components/CategoryFilter';
 import { MoonLoader  } from  'react-spinners'
 import Error from 'Components/Error';
 import { PiSmileySad } from "react-icons/pi";
+import { GiRun } from "react-icons/gi";
 
 import './index.scss';
 
@@ -17,48 +18,27 @@ const Home = () => {
 
   const init = async () => {
 
-    // setLoadingProducts(true);
-    // const promesasResueltas = await Promise.allSettled([ actualCategory === 'All' ? getProducts() : getProductsByCategory(actualCategory) , getCategories()])
+    setLoadingProducts(true);
+    const promesasResueltas = await Promise.allSettled(
+      [ actualCategory === 'All'? 
+        getProducts() : 
+        getProductsByCategory(actualCategory) , 
+        getCategories()
+      ])
 
-    // if (promesasResueltas[0].status != "rejected" ) {
-    //   setProducts(promesasResueltas[0].value.data);
-    //   setLoadingProducts(false);
-    // } else {
-    //   console.log("ERROR ON PRODUCTS FETCH");
-    // } 
+    if (promesasResueltas[0].status != "rejected" ) {
+      setProducts(promesasResueltas[0].value.data);
+      setLoadingProducts(false);
+    } else {
+      console.log("ERROR ON PRODUCTS FETCH");
+    } 
 
-    // if (promesasResueltas[1].status != "rejected" ) {
-    //   promesasResueltas[1].value.data.unshift("All");
-    //   setCategories(promesasResueltas[1].value.data);
-    // } else {
-    //   console.log("ERROR ON CATEGORIES FETCH");
-    // }
-
-    try {
-      const response = await getCategories();
-      response.data.unshift("All", "TTGL");
-      setCategories(response.data);
-    } catch (error) {
+    if (promesasResueltas[1].status != "rejected" ) {
+      promesasResueltas[1].value.data.unshift("All","TTGL");
+      setCategories(promesasResueltas[1].value.data);
+    } else {
       console.log("ERROR ON CATEGORIES FETCH");
     }
-
-    setLoadingProducts(true);
-    if (actualCategory === "All") {
-      try {
-        const response = await getProducts();
-        setProducts(response.data);
-      } catch (error) {
-        console.log("ERROR ON PRODUCTS FETCH");
-      }
-    } else {
-      try {
-        const response = await getProductsByCategory(actualCategory);
-        setProducts(response.data);
-      } catch (error) {
-        console.log("ERROR ON PRODUCTS FETCH");
-      }
-    }
-    setLoadingProducts(false);
   }
 
   const handleCategory = (category) => {
