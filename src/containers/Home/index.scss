@@ -17,5 +17,19 @@ body{
     font-size: 12px;
     margin: 0;
   }
+
+  &-error {
+    background-color: #D8D9DA;
+    width: auto;
+    margin: 0 200px 0 200px;
+    height: 400px;
+    color: black;
+    font-size: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+  }
 }
 

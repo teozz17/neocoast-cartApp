@@ -3,7 +3,8 @@ import ProductList from 'Components/ProductList';
 import { getProducts, getProductsByCategory, getCategories } from '../../api/products';
 import CategoryFilter from 'Components/CategoryFilter';
 import { MoonLoader  } from  'react-spinners'
-
+import Error from 'Components/Error';
+import { PiSmileySad } from "react-icons/pi";
 
 import './index.scss';
 
@@ -35,7 +36,7 @@ const Home = () => {
 
     try {
       const response = await getCategories();
-      response.data.unshift("All");
+      response.data.unshift("All", "TTGL");
       setCategories(response.data);
     } catch (error) {
       console.log("ERROR ON CATEGORIES FETCH");
@@ -83,7 +84,19 @@ const Home = () => {
             cssOverride={{'marginLeft': "auto", 'marginRight': "auto" , 'marginTop': "10%"}}
           /> 
           : 
-         <ProductList products={ products } /> }
+            products.length === 0 ? 
+            <div className='home-error'>
+              <Error
+                color={"black"}
+                message={"Unfortunately there aren't any products for this category"} 
+                icon={<PiSmileySad className='home-error__icon'/>}
+              />   
+            </div>
+          : 
+            <ProductList 
+              products={ products } 
+            /> 
+          }
     </div>
   );
 };
