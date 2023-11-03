@@ -18,6 +18,7 @@ const CategoryFilter = ({categories, setActualCategory, actualCategory}) => {
             >
                 <AiFillFilter 
                     className="category-filter__selector" 
+                    title="Filter by category"
                 /> 
             </div>
             <div 
