@@ -7,7 +7,7 @@ import { HiOutlineLogout, HiOutlineLogin } from "react-icons/hi";
 
 import "./index.scss";
 
-const NavBar = ({context, logo, routes}) => {
+const NavBar = ({context, logo, routes, title}) => {
 
     const actualUser = context;
     const [menuOpen, setMenuOpen] = useState(false);
@@ -16,30 +16,36 @@ const NavBar = ({context, logo, routes}) => {
         <header className="nav-bar">
             <div className="nav-bar__logo">
                 <Link to={ROUTES.home}>
-                    <img className="image" src={logo} alt="Logo" />
+                    <img className="image" src={logo} alt="Logo" title="Home"/>
                 </Link>
             </div>
             <div className="nav-bar__menu" onClick={() => setMenuOpen(!menuOpen)}>
-                <GiHamburgerMenu />
+                <GiHamburgerMenu title="Menu"/>
             </div>
             <nav className="nav-bar__nav">
                 <ul className={menuOpen ? "open" : ""}>
-                    {routes.map(({label, logo, route}) => (
+                    {routes.map(({label, logo, route, title}) => (
                         <li key={label} className="icon-style">
-                            <NavLink to={route} onClick={() => setMenuOpen(!menuOpen)}>
+                            <NavLink to={route} title={title} onClick={() => setMenuOpen(!menuOpen)}>
+                                <span className="label-style">{label}</span>
                                 {logo}
                             </NavLink>
                         </li>
                     ))}
                     <li>
                         {actualUser != null ?
-                            <Link className="icon-style__log" to={"/login"}>
+                            <Link className="icon-style__log" to={ROUTES.login}>
+                                <span className="label-style">Logout</span>
                                 <HiOutlineLogout onClick={() => {
                                     localStorage.clear()
-                                }}/>
+                                }}
+                                title="Logout"
+                                />
                             </Link>
-                        :   <Link className="icon-style__log" to={"/login"}>
-                                <HiOutlineLogin />
+                        :   <Link className="icon-style__log" to={ROUTES.login}>
+                                <HiOutlineLogin 
+                                title="Login"
+                                />
                             </Link>
                         }
                     </li>

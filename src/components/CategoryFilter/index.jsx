@@ -15,6 +15,7 @@ const CategoryFilter = ({categories, setActualCategory, actualCategory}) => {
                 onClick={() => setCategoriesMenuOpen(true)}
                 onMouseEnter={() => setCategoriesMenuOpen(true)}
                 onMouseLeave={() => setCategoriesMenuOpen(false)}
+                title="Filter by category"
             >
                 <AiFillFilter 
                     className="category-filter__selector" 
