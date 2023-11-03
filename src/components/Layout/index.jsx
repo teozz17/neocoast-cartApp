@@ -18,9 +18,9 @@ const Layout = () => {
                     context = {actualUser}
                     logo={'https://img.freepik.com/vector-gratis/diseno-logotipo-tienda-instagram_23-2149750724.jpg'}
                     routes={[
-                        {label: 'Cart', logo: <BsFillCartPlusFill />, route: ROUTES.cart}, 
-                        {label: 'Gift', logo: <BsGiftFill />, route: ROUTES.gitf}, 
-                        {label: 'Progile', logo: <CgProfile />, route: ROUTES.profile},
+                        {label: 'Cart', logo: <BsFillCartPlusFill />, route: ROUTES.cart, title: 'Personal Cart'}, 
+                        {label: 'Gift', logo: <BsGiftFill />, route: ROUTES.gitf, title: 'Send a Gift'}, 
+                        {label: 'Profile', logo: <CgProfile />, route: ROUTES.profile, title: 'Profile'},
                 ]}
                 />
             :   <NavBar 
