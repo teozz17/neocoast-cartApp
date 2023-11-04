@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext, Link } from "react-router-dom";
 import { ROUTES } from "Data/constants";
 import { getUser } from "../../api/users";
 import ShowElement from "Components/ShowElement";
@@ -39,10 +39,15 @@ const Profile = () => {
                     color="#ff9b00"
                     size={99}
                     speedMultiplier={0.7}
-                    cssOverride={{'marginLeft': "auto", 'marginRight': "auto" , 'marginTop': "16.2%"}}
+                    cssOverride={{'marginLeft': "auto", 'marginRight': "auto", 'marginTop': "17.2%"}}
                 />
             : 
+            <div className="profile">
+                <div className="profile__back">
+                    <Link onClick={() => navigate(-1)}>🡸 Back</Link>
+                </div>
                 <ShowElement user={user}/>
+            </div>
             }
         </div>
     )
