@@ -35,7 +35,7 @@ const ShowElement = ({ user, product }) => {
                     </h1>}
                     {product && <div className="first-container__product__category-price"> 
                         <h1 name="category" className="first-container__product">
-                            <span className="first-container__name">{category}</span>
+                            <span className="first-container__name__category">{category}</span>
                         </h1>
                         <h1 name="price" className="first-container__product">
                             <span className="first-container__name__price">${price}</span>
