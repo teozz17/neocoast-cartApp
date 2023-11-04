@@ -18,7 +18,7 @@
         box-shadow: none;
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: 340px) {
         margin: 0px;
         margin-top: 5px;
         padding: 5px;
@@ -35,12 +35,12 @@
     height: auto;
     margin-bottom: 10px;
 
-    @media (max-width: 626px) {
+    @media (max-width: 850px) {
         flex-direction: column;
     }
 
-    & img {
-        margin: 20px 20px 20px 0px;
+    & .user-image {
+        margin: 20px 20px 20px 20px;
         width: 150px;
         height: 150px;
         top: 0;
@@ -53,13 +53,15 @@
         }
     }
 
+    
     &__title {
         background-color: white;
         padding: 5px;
         border-radius: 10px;
         width: auto;
         height: auto;
-
+        margin: 15px;
+        
         &.second {
             width: 510px;
         
@@ -73,19 +75,14 @@
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        margin: 1rem;
         width: auto;
         height: auto;
-        font-size: 1.5rem;
         font-weight: 400;
         font-family: monospace;
-        padding-left: 10px;
-        padding-right: 10px;
         cursor: default;
 
         @media (max-width: 570px) {
-            font-size: 1rem;
-            padding: 0px;
+            
         }
         
         &:hover {
@@ -95,11 +92,66 @@
         }
     }
 
+    
     &__name {
         background-color: #D0D4CA;
         padding: 5px;
         border-radius: 10px;
         margin-left: 10px;
+        margin-right: 10px;
+
+        &__price {
+            background-color: #D0D4CA;
+            padding: 5px;
+            border-radius: 10px;
+            margin-left: 10px;
+            font-size: 1.75rem;
+            font-weight: 900;
+        }
     }
     
+    & .product-image {
+        margin: 20px 20px 20px 20px;
+        width: 100%;
+        max-width: 340px;
+        height: 340px;
+        top: 0;
+        left: 0;
+        border-radius: 10px;
+
+        @media (max-width: 626px) {
+            max-width: 280px;
+            height: 280px;
+        }
+    }
+
+    &__product {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: auto;
+        height: auto;
+        font-weight: 400;
+        font-family: monospace;
+        cursor: default;
+    
+        &__rating {
+            margin: 1rem;
+            text-align: right;
+            font-family: monospace;
+            font-weight: 400;
+        }
+
+        &__category-price {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: auto;
+        }
+    }
+
+    &__rating {
+        text-align: right;
+    }
 }
