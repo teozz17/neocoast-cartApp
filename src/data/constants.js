@@ -5,6 +5,6 @@ export const ROUTES = {
   login: 'login',
   profile: 'profile',
   product: 'product/:id',
-  cart: 'cart/:id',
   gitf: 'gift',
+  cart: 'cart',
 };
