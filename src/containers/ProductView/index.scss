@@ -1,0 +1,24 @@
+.product-view {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;    
+
+    @media (max-width: 852px) {
+        height: 100%;
+    }
+
+    &__back {
+        width: 93%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 10px 10px 50px 20px;
+    }
+}
+
+.contenedor {
+    width: auto;
+}
