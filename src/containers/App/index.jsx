@@ -12,6 +12,7 @@ import Home from 'Containers/Home';
 import Login from 'Containers/Login';
 import Profile from 'Containers/Profile';
 import ProductView from 'Containers/ProductView';
+import Cart from 'Containers/Cart';
 
 import './index.scss';
 
@@ -22,7 +23,7 @@ const App = () => (
       <Route path={ROUTES.login} element={<Login />}/>
       <Route path={ROUTES.home} element={<Layout />} >
         <Route index element={<Home />} />
-        <Route path={ROUTES.cart} element={""} />
+        <Route path={ROUTES.cart} element={<Cart />} />
         <Route path={ROUTES.gitf} element={""} />
         <Route path={ROUTES.profile} element={<Profile />} />
         <Route path={ROUTES.product} element={<ProductView />} />
