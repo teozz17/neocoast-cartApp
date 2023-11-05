@@ -23,9 +23,9 @@ const App = () => (
       <Route path={ROUTES.login} element={<Login />}/>
       <Route path={ROUTES.home} element={<Layout />} >
         <Route index element={<Home />} />
-        <Route path={ROUTES.cart} element={<Cart />} >
-          <Route path={':id'} />
-          <Route path={''}  />
+        <Route path={ROUTES.cart} >
+          <Route path={':id'} element={<Cart />} />
+          <Route path={''} element={<Cart />} />
         </Route>
         <Route path={ROUTES.gitf} element={""} />
         <Route path={ROUTES.profile} element={<Profile />} />

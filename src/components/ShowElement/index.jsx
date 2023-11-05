@@ -41,7 +41,6 @@ const ShowElement = ({ user, product }) => {
                             <span className="first-container__name__price">${price}</span>
                         </h1> 
                     </div>}
-
                 </div>
             </div> 
             {user && <div className="first-container__title second">
