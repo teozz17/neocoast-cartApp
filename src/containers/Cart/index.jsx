@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, useOutletContext, Link } from "react-router-dom";
 import { ROUTES } from "Data/constants";
-import { getUserCart, setUserCart } from "../../api/carts";
+import { getUserCart, setUserCart, getUserCartByCartId } from "../../api/carts";
 import { getProduct } from "../../api/products";
 import { MoonLoader  } from  'react-spinners'
 import Error from 'Components/Error';
@@ -15,7 +15,8 @@ import "./index.scss";
 const Cart = () => {
 
     const { id }  = useParams();
-    let actualUser = useOutletContext();
+    const logged = id == null;
+    const actualUser = useOutletContext();
     const navigate = useNavigate();
     const [cartId, setCartId] = useState(null);
     const [products, setProducts] = useState([]);
@@ -28,15 +29,20 @@ const Cart = () => {
         try {
             setReject(false);
             setLoading(true);
-            if (id != null) { 
-                actualUser = id;
+            let response = [];
+            if (!logged) { 
+                response = await getUserCartByCartId(id);
+            } else {
+                response = await getUserCart(actualUser);
             }
-            const response = await getUserCart(actualUser);
-            if (response.data.length === 0) {
+            if (response.data == null) {
                 setEmpty(true);
                 throw new Error();
-            }
-            const specifiedCart = response.data.reduce((acc, me) => acc.date > me.date ? acc : me);
+            };
+            let specifiedCart = response.data;
+            if (logged) {
+                specifiedCart = response.data.reduce((acc, me) => acc.date > me.date ? acc : me);
+            };
             setCartId(specifiedCart.id);
             initializeProducts(specifiedCart.products);
         } catch (error) {
@@ -78,7 +84,7 @@ const Cart = () => {
             navigate(ROUTES.home)
         :
             init();
-    }, []);
+    }, [id]);
 
     return (
         <div className="cart">
@@ -97,7 +103,7 @@ const Cart = () => {
                 <div className='cart-error'>
                     <Error
                         color={"black"}
-                        message={"This cart is empty 😢"} 
+                        message={"This cart does not exists 😢"} 
                         icon={<FaSadCry className='home-error__icon'/>}
                     />
                 </div>
@@ -121,15 +127,17 @@ const Cart = () => {
                     <Link to={ROUTES.home}>🡸 Back</Link>
                 </div>
                 <div className="cart-container">
-                    <span className="cart-container__title">OWN CART</span>
+                    {logged && <span className="cart-container__title">OWN CART</span>}
+                    {!logged && <span className="cart-container__title">FRIEND'S CART</span>}
                     <div className="container__second">
-                        <div className="products-container">
+                        <div className={logged? "products-container" : 'products-container__not-logged'}>
                             <ProductList products={products} cart={true}/>    
                         </div>
                         <div className={modalOpen? "modal-open" : "modal-closed"}>
                             <Modal/>
                         </div>
-                        <button className="cart-container__button" onClick={() => buyCart()}>Buy Cart</button>
+                        {logged && <button className="cart-container__button" onClick={() => buyCart()}>Buy Cart</button>}
+                        {!logged && <button className="cart-container__button" onClick={() => buyCart()}>Send Gift</button>}
                     </div>
                 </div>
             </div>}
