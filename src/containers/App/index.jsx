@@ -13,6 +13,7 @@ import Login from 'Containers/Login';
 import Profile from 'Containers/Profile';
 import ProductView from 'Containers/ProductView';
 import Cart from 'Containers/Cart';
+import Gift from 'Containers/Gift';
 
 import './index.scss';
 
@@ -27,7 +28,7 @@ const App = () => (
           <Route path={':id'} element={<Cart />} />
           <Route path={''} element={<Cart />} />
         </Route>
-        <Route path={ROUTES.gitf} element={""} />
+        <Route path={ROUTES.gitf} element={<Gift />} />
         <Route path={ROUTES.profile} element={<Profile />} />
         <Route path={ROUTES.product} element={<ProductView />} />
       </Route>
