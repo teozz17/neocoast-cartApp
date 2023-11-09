@@ -7,7 +7,7 @@ import { HiOutlineLogout, HiOutlineLogin } from "react-icons/hi";
 
 import "./index.scss";
 
-const NavBar = ({context, logo, routes, title}) => {
+const NavBar = ({context, logo, routes }) => {
 
     const actualUser = context;
     const [menuOpen, setMenuOpen] = useState(false);
@@ -19,6 +19,7 @@ const NavBar = ({context, logo, routes, title}) => {
                     <img className="image" src={logo} alt="Logo" title="Home"/>
                 </Link>
             </div>
+            <div className="wave-nav" ></div>
             <div className="nav-bar__menu" onClick={() => setMenuOpen(!menuOpen)}>
                 <GiHamburgerMenu title="Menu"/>
             </div>

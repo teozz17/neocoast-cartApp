@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, useOutletContext, Link } from "react-router-dom";
 import { ROUTES } from "Data/constants";
-import { getUserCart, setUserCart, getUserCartByCartId } from "../../api/carts";
+import { getUserCart, getUserCartByCartId } from "../../api/carts";
 import { getProduct } from "../../api/products";
 import { MoonLoader  } from  'react-spinners'
 import Error from 'Components/Error';
@@ -18,11 +18,12 @@ const Cart = () => {
     const logged = id == null;
     const actualUser = useOutletContext();
     const navigate = useNavigate();
-    const [cartId, setCartId] = useState(null);
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [noCart, setNoCart] = useState(false); //no cart for this user
     const [empty, setEmpty] = useState(false);
     const [reject, setReject] = useState(false);
+    const [fail, setFail] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
 
     const init = async () => {
@@ -34,6 +35,7 @@ const Cart = () => {
                 response = await getUserCartByCartId(id);
             } else {
                 response = await getUserCart(actualUser);
+                response.data.length === 0? setNoCart(true) : setNoCart(false);
             }
             if (response.data == null) {
                 setEmpty(true);
@@ -43,7 +45,6 @@ const Cart = () => {
             if (logged) {
                 specifiedCart = response.data.reduce((acc, me) => acc.date > me.date ? acc : me);
             };
-            setCartId(specifiedCart.id);
             initializeProducts(specifiedCart.products);
         } catch (error) {
             setLoading(false);
@@ -75,8 +76,9 @@ const Cart = () => {
     }
 
     const buyCart = () => {
+        const random = Math.floor(Math.random() * 10);
+        random < 5? setFail(true) : setFail(false);
         setModalOpen(!modalOpen);
-        setUserCart(cartId);
     }
 
     useEffect(() => {
@@ -95,15 +97,28 @@ const Cart = () => {
                     speedMultiplier={0.7}
                     cssOverride={{'marginLeft': "auto", 'marginRight': "auto", 'marginTop': "15%"}}
                 />
+            : noCart?
+            <div style={{width: '100%'}}> 
+            <div className="cart__back">
+                <Link onClick={() => navigate(-1)}>🡸 Back</Link>
+            </div>
+            <div className='cart-error'>
+                <Error
+                    color={"black"}
+                    message={"This cart is empty 😢"} 
+                    icon={<FaSadCry className='home-error__icon'/>}
+                />
+            </div>
+        </div> 
             : empty?
             <div style={{width: '100%'}}> 
                 <div className="cart__back">
-                    <Link to={ROUTES.home}>🡸 Back</Link>
+                    <Link onClick={() => navigate(-1)}>🡸 Back</Link>
                 </div>
                 <div className='cart-error'>
                     <Error
                         color={"black"}
-                        message={"This cart does not exists 😢"} 
+                        message={"This cart does not exist 😢"} 
                         icon={<FaSadCry className='home-error__icon'/>}
                     />
                 </div>
@@ -111,7 +126,7 @@ const Cart = () => {
             : reject?
             <div style={{width: '100%'}}> 
                 <div className="cart__back">
-                    <Link to={ROUTES.home}>🡸 Back</Link>
+                    <Link onClick={() => navigate(-1)}>🡸 Back</Link>
                 </div>
                 <div className='cart-error'>
                     <Error
@@ -124,7 +139,7 @@ const Cart = () => {
             :
             <div className="cart">                
                 <div className="cart__back">
-                    <Link to={ROUTES.home}>🡸 Back</Link>
+                    <Link onClick={() => navigate(-1)}>🡸 Back</Link>
                 </div>
                 <div className="cart-container">
                     {logged && <span className="cart-container__title">OWN CART</span>}
@@ -134,10 +149,17 @@ const Cart = () => {
                             <ProductList products={products} cart={true}/>    
                         </div>
                         <div className={modalOpen? "modal-open" : "modal-closed"}>
-                            <Modal/>
+                            <Modal message={fail? 'Something went wrong 😢 try again later' : 'Thank you for your purchase!'}/>
                         </div>
-                        {logged && <button className="cart-container__button" onClick={() => buyCart()}>Buy Cart</button>}
-                        {!logged && <button className="cart-container__button" onClick={() => buyCart()}>Send Gift</button>}
+                        <div className="cart-container__right">
+                            <div className="cart-container__right__right">
+                                <span className="cart-container__total">
+                                    <p>Total Price:</p> ${products.reduce((acc, product) => acc + product.price * product.quantity, 0)}
+                                </span>
+                            </div>
+                            {logged && <button className="cart-container__button" onClick={() => buyCart()}>Buy Cart</button>}
+                            {!logged && <button className="cart-container__button" onClick={() => buyCart()}>Send Gift</button>}
+                        </div>
                     </div>
                 </div>
             </div>}

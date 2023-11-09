@@ -3,13 +3,18 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: auto;
+    width: 600px;
     height: auto;
     background-color: #132043;
-    border-radius: 50px;
+    border-radius: 20px;
     margin: 5px;
+    margin-bottom: 20px;
     padding: 50px;
     box-shadow: 0 1px 20px 5px rgb(0, 0, 0, 0.36);
+
+    @media (max-width: 750px) {
+        width: auto;
+    }
 
     @media (max-width: 670px) {
         margin: 0px;
@@ -18,12 +23,12 @@
         box-shadow: none;
     }
 
-    @media (max-width: 340px) {
+    @media (max-width: 388px) {
         margin: 0px;
         margin-top: 5px;
         padding: 5px;
         box-shadow: none;
-        
+        width: 300px;
     }
 }
 
@@ -37,6 +42,7 @@
 
     @media (max-width: 850px) {
         flex-direction: column;
+        align-items: center;
     }
 
     & .user-image {
@@ -58,7 +64,7 @@
         background-color: white;
         padding: 5px;
         border-radius: 10px;
-        width: auto;
+        width: 305px;
         height: auto;
         margin: 15px;
         
@@ -68,6 +74,12 @@
             @media (max-width: 626px) {
                 width: auto;
             }
+        }
+
+        @media (max-width: 453px) {
+            width: 260px;
+            padding: 5px;
+            margin: 5px;
         }
     }
 
@@ -99,6 +111,7 @@
         border-radius: 10px;
         margin-left: 10px;
         margin-right: 10px;
+        width: 100%;
 
         &__price {
             background-color: #D0D4CA;
@@ -107,6 +120,7 @@
             margin-left: 10px;
             font-size: 1.75rem;
             font-weight: 900;
+            margin-right: 15px;
         }
 
         &__category {
@@ -120,29 +134,35 @@
     }
     
     & .product-image {
-        margin: 20px 20px 20px 20px;
-        width: 100%;
-        max-width: 340px;
-        height: 340px;
+        margin-right: 10px;
+        max-width: 300px;
+        height: 400px;
         top: 0;
         left: 0;
         border-radius: 10px;
+        margin-left: 10px;
 
-        @media (max-width: 626px) {
-            max-width: 280px;
-            height: 280px;
+        @media (max-width: 453px) {
+            width: 270px;
+            margin-left: 8px;
         }
     }
 
     &__product {
         display: flex;
         align-items: center;
-        justify-content: flex-start;
-        width: auto;
+        justify-content: center;
+        margin-left: 2.5px;
+        width: 300px;
         height: auto;
         font-weight: 400;
         font-family: monospace;
         cursor: default;
+        overflow: hidden;
+
+        @media (max-width: 453px) {
+            width: 250px;
+        }
     
         &__rating {
             margin: 1rem;
@@ -157,6 +177,7 @@
             align-items: center;
             justify-content: space-between;
             width: auto;
+
         }
     }
 

@@ -103,7 +103,7 @@
     }
 }
 
-.icon-style{
+.icon-style {
     font-size: 40px;
 
         & a {
@@ -139,9 +139,8 @@
         }
 }
 
-
 .image{
-    width: 100%;
+    width: 130px;
     height: 100%;
 }
 
@@ -154,5 +153,20 @@
         color: white;
         font-family: monospace;
         margin-right: 1.50rem;        
+    }
+}
+
+.wave-nav {
+    position: relative;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 800px;
+    height: 100px;
+    background-image: url("https://t3.ftcdn.net/jpg/03/73/79/78/360_F_373797887_Lzvrhb87ZWULflbGGdjVcKCQwc9bzdbB.jpg");
+    background-size: 400px 100px;
+    animation: animate 10s alternate infinite;
+
+    @media (max-width: 500px) {
+        display: none;
     }
 }
