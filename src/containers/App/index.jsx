@@ -14,6 +14,7 @@ import Profile from 'Containers/Profile';
 import ProductView from 'Containers/ProductView';
 import Cart from 'Containers/Cart';
 import Gift from 'Containers/Gift';
+import ErrorPage from 'Containers/ErrorPage';
 
 import './index.scss';
 
@@ -34,7 +35,7 @@ const App = () => (
       </Route>
 
       {/* 404 not found route */}
-      <Route path="*" element={""} />
+      <Route path="*" element={<ErrorPage />} />
 
     </Routes>
   </BrowserRouter>
