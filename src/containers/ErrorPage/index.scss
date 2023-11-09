@@ -1,0 +1,17 @@
+.error-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 50px;
+    font-family: monospace;
+    background: linear-gradient(90deg, rgb(238, 147, 34) , rgb(233, 184, 36), rgb(33, 156, 144));
+    color: white;
+
+    &__title {
+        color: red;
+        font-size: 100px;
+        margin-bottom: 0px;
+    }
+}
