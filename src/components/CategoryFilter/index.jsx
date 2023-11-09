@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CategoryButton from "Components/CategoryButton";
 import { AiFillFilter } from "react-icons/ai";
+import PropTypes from 'prop-types';
 
 import "./index.scss";
 
@@ -42,5 +43,13 @@ const CategoryFilter = ({categories, setActualCategory, actualCategory}) => {
         </div>
     );
 }
+
+CategoryFilter.propTypes = {
+    categories: PropTypes.arrayOf(
+        PropTypes.string.isRequired
+    ).isRequired,
+    setActualCategory: PropTypes.func.isRequired,
+    actualCategory: PropTypes.string.isRequired,
+};
 
 export default CategoryFilter;

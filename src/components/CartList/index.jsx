@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
 import CategoryButton from "Components/CategoryButton";
+import PropTypes from 'prop-types';
 
 import './index.scss';
 
@@ -27,6 +28,16 @@ const CartList = ({ carts }) => {
         {length === 0 && <h1 style={{fontFamily: 'monospace', fontSize: '40px'}}>There are no carts available 😢</h1>}
     </div>
   );
+};
+
+CartList.propTypes = {
+  carts: PropTypes.arrayOf(
+      PropTypes.shape({
+          id: PropTypes.number.isRequired,
+          userName: PropTypes.string.isRequired,
+          userLastname: PropTypes.string.isRequired,
+      })
+  ).isRequired,
 };
 
 export default CartList;

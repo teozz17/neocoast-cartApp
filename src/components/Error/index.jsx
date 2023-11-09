@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 import "./index.scss";
 
@@ -16,3 +17,14 @@ export default ({message, color, size, width, height, icon}) => {
         </div>
     );
 }
+
+Error.propTypes = {
+    message: PropTypes.string,
+    color: PropTypes.string,
+    size: PropTypes.string,
+    width: PropTypes.string,
+    height: PropTypes.string,
+    icon: PropTypes.element,
+};
+
+

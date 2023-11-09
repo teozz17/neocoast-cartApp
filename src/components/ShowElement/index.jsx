@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import PropTypes from 'prop-types';
 
 import "./index.scss";
 
@@ -64,6 +65,35 @@ const ShowElement = ({ user, product }) => {
             </div>}
         </div>
     );
+};
+
+ShowElement.propTypes = {
+    user: PropTypes.shape({
+        email: PropTypes.string.isRequired,
+        phone: PropTypes.string.isRequired,
+        username: PropTypes.string.isRequired,
+        address: PropTypes.shape({
+            street: PropTypes.string.isRequired,
+            number: PropTypes.number.isRequired,
+            city: PropTypes.string.isRequired,
+            zipcode: PropTypes.string.isRequired,
+        }).isRequired,
+        name: PropTypes.shape({
+            firstname: PropTypes.string.isRequired,
+            lastname: PropTypes.string.isRequired,
+        }).isRequired,
+    }),
+    product: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        category: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+        rating: PropTypes.shape({
+            rate: PropTypes.number.isRequired,
+            count: PropTypes.number.isRequired,
+        }).isRequired,
+    }),
 };
 
 export default ShowElement;

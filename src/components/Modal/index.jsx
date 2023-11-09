@@ -1,10 +1,11 @@
 import React from "react";
 import { ROUTES } from "Data/constants";
 import { Link } from "react-router-dom";
+import { PropTypes } from "prop-types";
 
 import "./index.scss";
 
-export default ({message}) => {
+const Modal = ({message}) => {
   return (
     <div>
         <div className="modal">
@@ -20,3 +21,9 @@ export default ({message}) => {
     </div>
   );
 }
+
+Modal.propTypes = {
+    message: PropTypes.string,
+};
+
+export default Modal;

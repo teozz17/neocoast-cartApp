@@ -4,6 +4,7 @@ import { ROUTES } from "../../data/constants";
 import NavBar from "Components/NavBar";
 import { BsFillCartPlusFill, BsGiftFill } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
+import { PropTypes } from "prop-types";
 
 import "./index.scss";
 
@@ -33,6 +34,11 @@ const Layout = () => {
             </div>
         </div>
     );
+};
+
+
+Layout.propTypes = {
+    children: PropTypes.node,
 };
 
 export default Layout;
