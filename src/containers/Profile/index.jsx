@@ -67,6 +67,7 @@ const Profile = () => {
                 <div className="profile__back">
                     <Link onClick={() => navigate(-1)}>🡸 Back</Link>
                 </div>
+                <h2 className='profile__title'>Profile</h2>
                 <ShowElement user={user}/>
             </div>
             }

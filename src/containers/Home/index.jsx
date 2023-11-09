@@ -21,7 +21,7 @@ const Home = () => {
 
     try {
       const response = await getCategories();
-      response.data.unshift("All", "TTGL");
+      response.data.unshift("All", "TTGL"); //TTGL (Tengen Toppa Gurren-Lagann) es una categoria que no existe, pero la puse para mostrar que pasaria si no hay productos
       setCategories(response.data);
     } catch (error) {
     }
@@ -32,7 +32,7 @@ const Home = () => {
         const response = await getProducts();
         setProducts(response.data);
         let random = Math.floor(Math.random() * 10);
-        if (random < 4){
+        if (random < 3){
           throw new Error();
         }
         setRejectedProducts(false);
@@ -44,7 +44,7 @@ const Home = () => {
         const response = await getProductsByCategory(actualCategory);
         setProducts(response.data);
         let random = Math.floor(Math.random() * 10);
-        if (random < 4){
+        if (random < 3){
           throw new Error();
         }
         setRejectedProducts(false);
@@ -65,40 +65,55 @@ const Home = () => {
 
   return(
     <div className="home">
-        <CategoryFilter 
-          categories={ categories } 
-          setActualCategory={ handleCategory } 
-          actualCategory={ actualCategory } 
-        />
         {loadingProducts?
           <MoonLoader
             color="#ff9b00"
             size={99}
             speedMultiplier={0.7}
-            cssOverride={{'marginLeft': "auto", 'marginRight': "auto" , 'marginTop': "10%"}}
-          /> 
+            cssOverride={{'marginLeft': "auto", 'marginRight': "auto" , 'marginTop': "15%"}}
+          />
           : rejectedProducts?
+            <>
+            <CategoryFilter 
+              categories={ categories } 
+              setActualCategory={ handleCategory } 
+              actualCategory={ actualCategory } 
+              />
             <div className='home-error'>
               <Error
                 color={"black"}
                 message={"Error on products fetch, please try again"} 
                 icon={<GiRun className='home-error__icon'/>}
-              />
+                />
             </div>
+              </>
             :
-            products.length === 0 ? 
+            products.length === 0 ?
+            <>
+            <CategoryFilter 
+              categories={ categories } 
+              setActualCategory={ handleCategory } 
+              actualCategory={ actualCategory } 
+            />
             <div className='home-error'>
               <Error
                 color={"black"}
                 message={"Unfortunately there aren't any products for this category"} 
                 icon={<PiSmileySad className='home-error__icon'/>}
-              />   
+                />   
             </div>
+            </>
           : 
+            <>
+            <CategoryFilter 
+              categories={ categories } 
+              setActualCategory={ handleCategory } 
+              actualCategory={ actualCategory } 
+            />
             <ProductList 
               products={ products } 
-            /> 
-          }
+              /> 
+            </>}
     </div>
   );
 };

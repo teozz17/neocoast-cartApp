@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import { ROUTES } from "Data/constants";
 import { getProduct } from "../../api/products";
 import ShowElement from "Components/ShowElement";
 import { MoonLoader  } from  'react-spinners'
@@ -11,7 +12,6 @@ import { ErrorResponse } from "@remix-run/router";
 
 const ProductView = () => {
 
-    const navigate = useNavigate();
     const { id } = useParams();
     const [product, setProduct] = useState(null);
     const [productDontExist, setProductDontExist] = useState(false);
@@ -61,7 +61,7 @@ const ProductView = () => {
             : reject?
             <div style={{width: "100%"}}> 
                 <div className="product-view__back">
-                        <Link onClick={() => navigate(-1)}>🡸 Back</Link>
+                        <Link to={ROUTES.home}>🡸 Back</Link>
                 </div>
                 <div className='product-view-error'>
                     <Error
@@ -74,7 +74,7 @@ const ProductView = () => {
             : productDontExist?
             <div style={{width: "100%"}}> 
                 <div className="product-view__back">
-                        <Link onClick={() => navigate(-1)}>🡸 Back</Link>
+                        <Link to={ROUTES.home}>🡸 Back</Link>
                 </div>
                 <div className='product-view-error'>
                     <Error
@@ -87,7 +87,7 @@ const ProductView = () => {
             :
             <div style={{width: '100%'}}>
                 <div className="product-view__back">
-                    <Link onClick={() => navigate(-1)}>🡸 Back </Link>
+                    <Link to={ROUTES.home}>🡸 Back </Link>
                 </div>
                 <div className="contenedor">
                     <ShowElement product={product} />

@@ -61,7 +61,7 @@ const onSubmit = (data) => {
             <ErrorMessage errors={errors} name="password" as={<p className="login-form__error"></p>}/>
             <button type="submit" className="login-form__button">Login</button>
         </form>
-        <div className="wave" ></div>
+        <div className="wave-Login" ></div>
     </div>
   )
 }   
