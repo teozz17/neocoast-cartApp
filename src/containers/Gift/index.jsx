@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { getCarts } from '../../api/carts';
 import { getUser } from '../../api/users';
 import {ROUTES } from 'Data/constants';
-import { useOutletContext, Link } from 'react-router-dom';
+import { useOutletContext, Link, useNavigate } from 'react-router-dom';
 import CartList from 'Components/CartList';
 import { MoonLoader  } from  'react-spinners'
 
@@ -15,6 +15,7 @@ const Gift = () => {
     const [loading, setLoading] = useState(true);
     const [reject, setReject] = useState(false);
     const actualUser = useOutletContext();
+    const navigate = useNavigate();
 
     const init = async () => {
         setLoading(true);
@@ -60,7 +61,10 @@ const Gift = () => {
     }
 
     useEffect(() => {
-        init();
+        actualUser == null? 
+            navigate(ROUTES.home)
+        :
+            init();
     }, []);
 
     return (
@@ -75,7 +79,7 @@ const Gift = () => {
             : reject?
             <div style={{width: '100%'}}> 
                 <div className="gift__back">
-                    <Link to={ROUTES.home}>🡸 Back</Link>
+                    <Link onClick={() => navigate(-1)}>🡸 Back</Link>
                 </div>
                 <div className='gift-error'>
                     <Error
@@ -88,7 +92,7 @@ const Gift = () => {
             :
             <>
             <div className="gift__back">
-                    <Link to={ROUTES.home}>🡸 Back</Link>
+                    <Link onClick={() => navigate(-1)}>🡸 Back</Link>
             </div>
             <h2 className='gift__title'>Send a Gift to a Friend!!!</h2>
             <CartList carts={carts} />         

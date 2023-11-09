@@ -45,9 +45,60 @@
                 width: 230px;
             }
         }
+        
+        &__right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: auto;           
+            
+            @media (max-width: 1074px) {
+                flex-direction: row;
+
+                @media (max-width: 850px) {
+                    flex-direction: column;
+                }
+            }
+            
+            &__right {
+                text-align: center;                
+                display: flex;
+                width: 245px;
+                margin-left: 20px;
+                margin-right: 5px;
+                font-size: 15px;
+                font-weight:lighter;
+                height: 230px;
+                
+                @media (max-width: 437px) {
+                    margin: 0%;
+                }
+
+                & p {
+                    margin-bottom: 15px;
+                }
+            }
+        }
+
+        &__total {
+            font-family: monospace;
+            font-size: larger;
+            font-weight: bold;
+            background-color: #D8D9DA;;
+            padding: 40px;
+            margin: 20px;
+            border-radius: 20px;
+            margin-bottom: 50px;
+
+            &-price {
+                background-color: red;
+                font-family: monospace;
+                font-size: larger;
+            }
+        }
 
         &__button {
-            height: 100%;
             display: flex;
             align-items: center;
             justify-content: flex-end;
@@ -56,10 +107,14 @@
             font-size: 25px;
             border-radius: 20px;
             background-color: orange; 
-            margin-top: 10px;
-            margin-left: 10px;  
+            margin-bottom: 30px;
+            margin-left: 20px;
             cursor: pointer; 
     
+            @media (max-width: 437px) {
+                margin: 0%;
+            }
+
             &:hover {
                 background-color: #F99417;
             }

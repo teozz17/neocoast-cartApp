@@ -31,4 +31,17 @@
       font-size: 100px;
     }
   }
+
+  &__title {
+    border-radius: 50px;
+    padding: 10px;
+    background-color: orange;
+    display: flex;
+    justify-content: center;
+    font-family: monospace;
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    width: 100%;
+  }
 }
